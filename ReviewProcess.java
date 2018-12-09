@@ -3,10 +3,14 @@ public class ReviewProcess{
 	public static void main(String[] args) {  
 		JFrame f=new JFrame();//creating instance of JFrame  
 
-		JLabel l1,l2,l3,l4;  
+		JLabel l1,l2,l3,l4,l5;  
 		l1=new JLabel("Review Process Page");  
     	l1.setBounds(100,0, 200,30);
     	f.add(l1);
+
+    	l5 = new JLabel("Logged in as 16ucs131");
+    	l5.setBounds(300,0,300,30);
+    	f.add(l5);
 
     	l2=new JLabel("Processes");  
     	l2.setBounds(100,30, 100,30);
