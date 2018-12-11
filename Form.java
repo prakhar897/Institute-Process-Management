@@ -1,42 +1,15 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
-import javax.servlet.*;
 
 public class Form implements ActionListener{
 	JFrame f;
 	int x=300;
-	static Vector<String> fields;
 	JTextField t1,t2;
 	JButton b1,b2,b3,b4,b5;
 
-	public Form(){
-		prepareGUI();
-	}
-
-	public static void main(String args[]){
-		fields = new Vector<>();
-		Form a = new Form();
-		/*try{
-			DriverManager.getConnection("jdbc:mysql://192.168.1.2:3306/dummy",
-				"dummy",
-				"dummy");
-			Statement stmt = conn.createStatement();
-			String sql = "select * grom dummy.gd_regions limit 10";
-			ResultSet rs = stmt.executeQuery(sql);
-			System.out.println(sql);
-
-			while(rs.next()){
-				System.out.println(rs.getString("region"));
-			}
-		}
-		catch(Exception e){
-			System.out.println(e);
-		}*/
-	}
-
 	public void prepareGUI(){	
-
+		System.out.print("prep GUI Form start");
 		f = new JFrame();
 
 		JLabel l1 = new JLabel("Form Name:");
@@ -92,6 +65,14 @@ public class Form implements ActionListener{
 		String desc = t2.getText();
 	}
 
+	void setVisible(){
+        f.setVisible(true);
+    }
+
+    void unsetVisible(){
+        f.setVisible(false);
+    }
+
 	class shortQ implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 
@@ -107,8 +88,6 @@ public class Form implements ActionListener{
 
 			f.validate();
 			f.repaint();
-
-
 		}
 	}
 

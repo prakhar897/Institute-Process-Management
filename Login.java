@@ -1,13 +1,12 @@
-import javax.swing.*; 
-public class Login{  
+import javax.swing.*;
+import java.awt.event.*; 
 
-	public static void main(String args[]){
-		Login a = new Login();
-		a.prepareGUI();
-	}
+public class Login implements ActionListener{  
+	JFrame f;
+	boolean cred = true;
 
 	void prepareGUI() {  
-		JFrame f=new JFrame();//creating instance of JFrame  
+		f=new JFrame();//creating instance of JFrame  
 
 		JLabel l1,l2,l3;  
 		l1=new JLabel("Login Page");  
@@ -24,7 +23,7 @@ public class Login{
 
 
 		JTextField t1,t2;  
-	    t1=new JTextField("");  
+	    t1=new JTextField("");
 	    t1.setBounds(80,100, 200,30);  
 	    t2=new JTextField("");  
 	    t2.setBounds(80,150, 200,30);  
@@ -32,11 +31,30 @@ public class Login{
 		          
 		JButton b=new JButton("Submit");//creating instance of JButton  
 		b.setBounds(130,200,100, 40);//x axis, y axis, width, height  
-		          
 		f.add(b);//adding button in JFrame  
-		          
+		b.addActionListener(this);  
+
 		f.setSize(400,500);//400 width and 500 height  
 		f.setLayout(null);//using no layout managers  
-		f.setVisible(true);//making the frame visible  
-	}  
+		 
+	}
+
+	void setVisible(){
+		f.setVisible(true);
+	}
+
+	void unsetVisible(){
+		f.setVisible(false);
+	}
+
+	public void actionPerformed(ActionEvent e){
+		if(cred == true)
+		{
+			this.unsetVisible();
+			Home a = new Home();
+			a.prepareGUI();
+			a.setVisible();
+		}
+	}
+
 }  
