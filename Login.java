@@ -1,6 +1,12 @@
-import javax.swing.*;  
+import javax.swing.*; 
 public class Login{  
-	public static void main(String[] args) {  
+
+	public static void main(String args[]){
+		Login a = new Login();
+		a.prepareGUI();
+	}
+
+	void prepareGUI() {  
 		JFrame f=new JFrame();//creating instance of JFrame  
 
 		JLabel l1,l2,l3;  

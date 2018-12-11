@@ -1,16 +1,21 @@
 import javax.swing.*;
 import java.awt.event.*;
-import java.sql.*;
+import java.util.*;
+import javax.servlet.*;
 
-public class Form{
+public class Form implements ActionListener{
 	JFrame f;
 	int x=300;
+	static Vector<String> fields;
+	JTextField t1,t2;
+	JButton b1,b2,b3,b4,b5;
 
 	public Form(){
 		prepareGUI();
 	}
 
 	public static void main(String args[]){
+		fields = new Vector<>();
 		Form a = new Form();
 		/*try{
 			DriverManager.getConnection("jdbc:mysql://192.168.1.2:3306/dummy",
@@ -38,7 +43,7 @@ public class Form{
 		l1.setBounds(10,50,150,50);
 		f.add(l1);
 
-		JTextField t1=new JTextField();	
+		t1=new JTextField();	
 		t1.setBounds(150,50,300,50);
 		f.add(t1);
 
@@ -46,38 +51,45 @@ public class Form{
 		l2.setBounds(10,100,150,50);
 		f.add(l2);
 
-		JTextField t2=new JTextField();	
+		t2=new JTextField();	
 		t2.setBounds(150,100,300,50);
 		f.add(t2);
 
-		JButton b = new JButton("Add Short Question");
-		b.setBounds(10,180,100,30);//x axis, y axis, width, height  
-		f.add(b);
-		b.addActionListener(new shortQ());
+		b1 = new JButton("Add Short Question");
+		b1.setBounds(10,180,100,30);//x axis, y axis, width, height  
+		f.add(b1);
+		b1.addActionListener(new shortQ());
 
-		JButton b2=new JButton("Add Long Question");
+		b2=new JButton("Add Long Question");
 		b2.setBounds(10,210,100,30);//x axis, y axis, width, height  
 		f.add(b2);
 		b2.addActionListener(new LongQ());
 
-		JButton b3=new JButton("Add MCQ Question");
+		b3=new JButton("Add MCQ Question");
 		b3.setBounds(10,240,100,30);//x axis, y axis, width, height  
 		f.add(b3);
 		b3.addActionListener(new MCQ());
 
-		JButton b4=new JButton("Add Checkbox Question");
+		b4=new JButton("Add Checkbox Question");
 		b4.setBounds(10,270,100,30);//x axis, y axis, width, height  
 		f.add(b4);
 		b4.addActionListener(new Checkbox());
 
-		JButton b5 = new JButton("Submit");
+		b5 = new JButton("Submit");
 		b5.setBounds(900,500,100,30);
 		f.add(b5);
+		b5.addActionListener(this);
 
 		f.setSize(640,480); 
 		f.setLayout(null); 
 		f.setVisible(true); 
 
+	}
+
+	public void actionPerformed(ActionEvent e){
+		String name = t1.getText();
+		System.out.println(name); 
+		String desc = t2.getText();
 	}
 
 	class shortQ implements ActionListener{
@@ -95,7 +107,8 @@ public class Form{
 
 			f.validate();
 			f.repaint();
-			//System.out.println(x);
+
+
 		}
 	}
 
